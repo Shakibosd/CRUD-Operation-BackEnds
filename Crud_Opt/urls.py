@@ -1,10 +1,7 @@
 from django.urls import path
-from .views import PostApiView, GetApiView, DeleteApiView
+from .views import PlanListCreateAPIView, PlanRetrieveUpdateDestroyAPIView
 
 urlpatterns = [
-    path('plans-post/', PostApiView.as_view(), name='plan-list-post'),
-    path('plans-get/', GetApiView.as_view(), name='plan-list-get'),
-    path('plans-get/<int:id>/', GetApiView.as_view(), name='plan-list-get'),
-    path('plans-put/<int:id>/', GetApiView.as_view(), name='plan-list-put'),
-    path('plans-delete/<int:id>/', DeleteApiView.as_view(), name='plan-list-delete'),
+    path('plans', PlanListCreateAPIView.as_view(), name='plan-list-create'),
+    path('plans/<uuid:id>', PlanRetrieveUpdateDestroyAPIView.as_view(), name='plan-retrieve-update-destroy'),
 ]
